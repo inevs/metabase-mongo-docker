@@ -15,20 +15,18 @@ RUN apt-get update && apt-get install -y \
 # Create metabase user
 RUN groupadd -r metabase && useradd --no-log-init -r -g metabase metabase
 
-# Download and install Metabase
-RUN curl -o /metabase.jar https://downloads.metabase.com/v0.47.7/metabase.jar
-
 # Create directories and set permissions
 RUN mkdir -p /app/data && chown -R metabase:metabase /app
+
+# Download and install Metabase directly to app directory
+RUN curl -o /app/metabase.jar https://downloads.metabase.com/v0.47.7/metabase.jar && \
+    chown metabase:metabase /app/metabase.jar
 
 # Switch to metabase user
 USER metabase
 
 # Set working directory
 WORKDIR /app
-
-# Copy the jar file
-COPY --chown=metabase:metabase /metabase.jar /app/metabase.jar
 
 # Expose port
 EXPOSE 3000
@@ -38,4 +36,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
     CMD curl -f http://localhost:3000/api/health || exit 1
 
 # Start Metabase
-CMD ["java", "-jar", "/app/metabase.jar"]
+CMD ["java", "--add-opens", "java.base/java.nio=ALL-UNNAMED", "-jar", "metabase.jar"]
