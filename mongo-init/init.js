@@ -1,5 +1,7 @@
 // MongoDB initialization script
-db = db.getSiblingDB('financedb');
+// Use the database name from environment variable
+const dbName = process.env.MONGO_INITDB_DATABASE || 'financedb';
+db = db.getSiblingDB(dbName);
 
 // Create a sample collection and insert some test data
 db.createCollection('transactions');
@@ -29,4 +31,4 @@ db.transactions.insertMany([
   }
 ]);
 
-print("Initialized financedb with sample data");
+print(`Initialized ${dbName} with sample data`);

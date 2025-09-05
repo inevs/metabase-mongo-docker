@@ -15,7 +15,9 @@ This setup provides a custom Metabase installation with MongoDB for financial da
    docker compose up -d
    ```
 
-3. Access Metabase at: http://localhost:3000
+3. Access the web interfaces:
+   - **Metabase**: http://localhost:3000
+   - **MongoDB Express**: http://localhost:8081
 4. MongoDB is available at: localhost:27017
 
 ## Environment Configuration
@@ -52,6 +54,7 @@ All sensitive data is stored in the `.env` file. You can customize:
 
 - **Metabase**: Port 3000 (custom build with Java 11)
 - **MongoDB**: Port 27017 (with sample financial data)
+- **MongoDB Express**: Port 8081 (web-based database admin interface)
 
 ## Volumes
 
