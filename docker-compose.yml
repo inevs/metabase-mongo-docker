@@ -1,7 +1,7 @@
 services:
   mongodb:
     image: mongo:7.0
-    container_name: finance-mongodb
+    container_name: controlling-mongodb
     restart: unless-stopped
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USERNAME}
@@ -13,11 +13,11 @@ services:
       - mongodb_data:/data/db
       - ./mongo-init:/docker-entrypoint-initdb.d
     networks:
-      - finance-network
+      - controlling-network
 
   metabase:
     build: .
-    container_name: finance-metabase
+    container_name: controlling-metabase
     restart: unless-stopped
     environment:
       MB_DB_TYPE: ${MB_DB_TYPE}
@@ -32,7 +32,7 @@ services:
     depends_on:
       - mongodb
     networks:
-      - finance-network
+      - controlling-network
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
       interval: 30s
@@ -47,5 +47,5 @@ volumes:
     driver: local
 
 networks:
-  finance-network:
+  controlling-network:
     driver: bridge
