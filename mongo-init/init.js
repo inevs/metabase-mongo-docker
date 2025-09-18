@@ -1,6 +1,6 @@
 // MongoDB initialization script
 // Use the database name from environment variable
-const dbName = process.env.MONGO_INITDB_DATABASE || 'financedb';
+const dbName = process.env.MONGO_INITDB_DATABASE || 'mongodb';
 db = db.getSiblingDB(dbName);
 
 // Create a sample collection and insert some test data

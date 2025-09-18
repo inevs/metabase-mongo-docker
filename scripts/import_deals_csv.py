@@ -75,7 +75,7 @@ def main():
     mongo_port = int(os.getenv('MONGO_PORT', '27017'))
     mongo_username = os.getenv('MONGO_ROOT_USERNAME', 'admin')
     mongo_password = os.getenv('MONGO_ROOT_PASSWORD', 'password123')
-    mongo_database = os.getenv('MONGO_DATABASE', 'financedb')
+    mongo_database = os.getenv('MONGO_DATABASE', 'mongodb')
 
     # CSV file path
     csv_file_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'deals-10118183-295.csv')

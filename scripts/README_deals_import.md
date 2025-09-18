@@ -26,7 +26,7 @@ The script uses environment variables that match your Docker setup:
 - `MONGO_PORT`: Default '27017'
 - `MONGO_ROOT_USERNAME`: Default 'admin'
 - `MONGO_ROOT_PASSWORD`: Default 'password123'
-- `MONGO_DATABASE`: Default 'financedb'
+- `MONGO_DATABASE`: Default 'mongodb'
 
 ## Features
 - Transforms German CSV headers to English field names

@@ -1,4 +1,4 @@
-# Finance DB with Metabase and MongoDB
+# Controlling DB with Metabase and MongoDB
 
 This setup provides a custom Metabase installation with MongoDB for financial data analysis.
 
@@ -32,7 +32,7 @@ All sensitive data is stored in the `.env` file. You can customize:
 ## MongoDB Connection Details
 
 - **Host**: mongodb (within Docker network) or localhost:27017 (from host)
-- **Database**: Value from `MONGO_DATABASE` (default: financedb)
+- **Database**: Value from `MONGO_DATABASE` (default: mongodb)
 - **Username**: Value from `MONGO_ROOT_USERNAME` (default: admin)
 - **Password**: Value from `MONGO_ROOT_PASSWORD` (default: password123)
 - **Authentication Database**: admin
@@ -45,7 +45,7 @@ All sensitive data is stored in the `.env` file. You can customize:
    - Database type: MongoDB
    - Host: mongodb
    - Port: 27017
-   - Database name: financedb (or your `MONGO_DATABASE` value)
+   - Database name: mongodb (or your `MONGO_DATABASE` value)
    - Username: admin (or your `MONGO_ROOT_USERNAME` value)
    - Password: password123 (or your `MONGO_ROOT_PASSWORD` value)
    - Additional connection string options: `authSource=admin`

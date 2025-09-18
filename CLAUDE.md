@@ -37,7 +37,7 @@ docker compose up -d --no-deps metabase
 docker exec -it controlling-mongodb mongosh -u admin -p --authenticationDatabase admin
 
 # Access MongoDB from host
-mongosh "mongodb://admin:password123@localhost:27017/financedb?authSource=admin"
+mongosh "mongodb://admin:password123@localhost:27017/mongodb?authSource=admin"
 ```
 
 ## Architecture
