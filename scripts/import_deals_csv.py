@@ -5,6 +5,7 @@ Script to import CSV deals data into MongoDB
 
 import csv
 import os
+import argparse
 from datetime import datetime
 from pymongo import MongoClient
 from pymongo.errors import ConnectionFailure
@@ -70,6 +71,11 @@ def transform_deal_row(row):
     }
 
 def main():
+    # Parse command line arguments
+    parser = argparse.ArgumentParser(description='Import CSV deals data into MongoDB')
+    parser.add_argument('csv_file', help='Path to the CSV file to import')
+    args = parser.parse_args()
+
     # MongoDB connection settings from environment or defaults
     mongo_host = os.getenv('MONGO_HOST', 'localhost')
     mongo_port = int(os.getenv('MONGO_PORT', '27017'))
@@ -77,8 +83,8 @@ def main():
     mongo_password = os.getenv('MONGO_ROOT_PASSWORD', 'password123')
     mongo_database = os.getenv('MONGO_DATABASE', 'mongodb')
 
-    # CSV file path
-    csv_file_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'deals-10118183-295.csv')
+    # CSV file path from argument
+    csv_file_path = args.csv_file
 
     if not os.path.exists(csv_file_path):
         print(f"Error: CSV file not found at {csv_file_path}")
